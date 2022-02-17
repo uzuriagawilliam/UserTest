@@ -1,0 +1,221 @@
+﻿@model List<UserTest.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h6>Set Access Rights for "@Model[0].CategoryName"</h6>
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <button class="btn alert-secondary" id="btnclick" type="button"> Add Users/Groups</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="form-horizontal">
+        <table>
+            @for (int ind = 0; ind < Model.Count; ind++)
+            @*@foreach(User ind in Model)*@
+            {
+                <tr>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model[ind].Id)
+                    <td>
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model[ind].UserName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            <div class="col-md-10">
+
+                                @Html.EditorFor(model => model[ind].UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model[ind].UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model[ind].Read, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model[ind].Read)
+                                    @Html.ValidationMessageFor(model => model[ind].Read, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model[ind].Create, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model[ind].Create)
+                                    @Html.ValidationMessageFor(model => model[ind].Create, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model[ind].Change, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model[ind].Change)
+                                    @Html.ValidationMessageFor(model => model[ind].Change, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model[ind].Delete, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model[ind].Delete)
+                                    @Html.ValidationMessageFor(model => model[ind].Delete, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model[ind].Publish, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model[ind].Publish)
+                                    @Html.ValidationMessageFor(model => model[ind].Publish, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model[ind].Administer, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model[ind].Administer)
+                                    @Html.ValidationMessageFor(model => model[ind].Administer, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+
+                </tr>
+            }
+        </table>
+
+        <div class="container">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model[0].InheritParent)
+                        @Html.ValidationMessageFor(model => model[0].InheritParent, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model[0].InheritParent, htmlAttributes: new { @class = "control-label col-md-10" })
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model[0].SettingsAllSubitems)
+                        @Html.ValidationMessageFor(model => model[0].SettingsAllSubitems, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model[0].SettingsAllSubitems, htmlAttributes: new { @class = "control-label col-md-10" })
+                    </div>
+                </div>
+            </div>
+         </div>
+
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" value="Save" class="btn alert-secondary" id="btnSaveAccess" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>    
+    <a href="https://localhost:44356/Home/Index">Back</a>
+</div>
+@*modal poup window*@
+
+    <div class="modal fade" id="addUserModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add user/group</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input class="form-control" type="text"
+                                   placeholder="User/Group name" id="inputUserName" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Email address"
+                                   type="email" id="emailAddress" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSaveNewUser" class="btn btn-primary">Add</button>
+                    <button type="button" id="btnHideModal" class="btn btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btnclick").click(function () {
+            $("#addUserModal").modal('show');
+        });
+
+        $("#btnHideModal").click(function () {
+            $("#addUserModal").modal('hide');
+        });
+
+        $("#btnSaveAccess").click(function () {
+            console.log("saving access rights");
+            alert("saving access rights...");
+        });
+
+        $("#btnSaveNewUser").click(function () {
+            console.log("saving New User");
+            alert("Adding a New User... ");
+        });
+    });
+</script>
