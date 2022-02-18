@@ -16,8 +16,8 @@ namespace UserTest.Controllers
             User user1 = new (1, "Administrators", cat, true, true, true, true, true, true, true, true);
             User user2 = new (2, "Everyone", cat, true, false, false, false, false, false,true, true);
             User user3 = new (3, "WebAdmins", cat, true, false, false, false, false, false, true, true);
-            User user4 = new (4, "Others", cat, true, false, false, false, false, false, true, true);
-            User user5 = new (5, "Me", cat, true, true, true, true, true, true, true, true);
+            //User user4 = new (4, "Others", cat, true, false, false, false, false, false, true, true);
+            //User user5 = new (5, "Me", cat, true, true, true, true, true, true, true, true);
 
             usersList.Add(user1);
             usersList.Add(user2);
@@ -26,20 +26,6 @@ namespace UserTest.Controllers
             //usersList.Add(user5);
 
             return View(usersList);
-        }
-
-        [HttpPost]
-        public void Index(List<User> users)
-        {
-            if (users is null)
-            {
-                throw new ArgumentNullException(nameof(users));
-            }
-
-            foreach(var user in users)
-            {
-                //Do something
-            }
         }
     }
 }
