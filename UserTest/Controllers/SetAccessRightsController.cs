@@ -9,15 +9,15 @@ namespace UserTest.Controllers
 {
     public class SetAccessRightsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string cat)
         {
             List<User> usersList = new();
 
-            User user1 = new (1, "Administrators", "Screen9 Video", true, true, true, true, true, true, true, true);
-            User user2 = new (2, "Everyone", "Screen9 Video", true, false, false, false, false, false,true, true);
-            User user3 = new (3, "WebAdmins", "Screen9 Video", true, false, false, false, false, false, true, true);
-            User user4 = new (4, "Others", "Screen9 Video", true, false, false, false, false, false, true, true);
-            User user5 = new (5, "Me", "Screen9 Video", true, true, true, true, true, true, true, true);
+            User user1 = new (1, "Administrators", cat, true, true, true, true, true, true, true, true);
+            User user2 = new (2, "Everyone", cat, true, false, false, false, false, false,true, true);
+            User user3 = new (3, "WebAdmins", cat, true, false, false, false, false, false, true, true);
+            User user4 = new (4, "Others", cat, true, false, false, false, false, false, true, true);
+            User user5 = new (5, "Me", cat, true, true, true, true, true, true, true, true);
 
             usersList.Add(user1);
             usersList.Add(user2);
