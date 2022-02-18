@@ -174,11 +174,11 @@
                     <form>
                         <div class="form-group">
                             <input class="form-control" type="text"
-                                   placeholder="User/Group name" id="inputUserName" />
+                                   placeholder="User/Group name" id="inputUserName" name="inputUserName"/>
                         </div>
                         <div class="form-group">
                             <input class="form-control" placeholder="Email address"
-                                   type="email" id="emailAddress" />
+                                   type="email" id="emailAddress" name="emailAddress"/>
                         </div>
                     </form>
                 </div>
@@ -214,8 +214,11 @@
         });
 
         $("#btnSaveNewUser").click(function () {
-            console.log("saving New User");
-            alert("Adding a New User... ");
+            
+            var userName = $('input[name="inputUserName"]').val();
+            var userEmail = $('input[name="emailAddress"]').val();
+
+            alert("Name: " + userName + " Email: " + userEmail);
         });
     });
 </script>
