@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h6>Set Access Rights for "@Model[0].CategoryName"</h6>
+                <h6>Set Access Rights for "@Model[0].Category.CategoryName"</h6>
             </div>
             <div class="col">
 
@@ -114,20 +114,19 @@
         <div class="container">
             <div class="form-group">
                 <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model[0].InheritParent)
-                        @Html.ValidationMessageFor(model => model[0].InheritParent, "", new { @class = "text-danger" })
-                        @Html.LabelFor(model => model[0].InheritParent, htmlAttributes: new { @class = "control-label col-md-10" })
-                    
+                    <div class="checkbox"> 
+                        @Html.EditorFor(model => model[0].Category.InheritParent)
+                        @Html.ValidationMessageFor(model => model[0].Category.InheritParent, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model[0].Category.InheritParent, "Inherit from parent", htmlAttributes: new { @class = "control-label col-md-10" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-10">
                     <div class="checkbox">
-                        @Html.EditorFor(model => model[0].SettingsAllSubitems)
-                        @Html.ValidationMessageFor(model => model[0].SettingsAllSubitems, "", new { @class = "text-danger" })
-                        @Html.LabelFor(model => model[0].SettingsAllSubitems, htmlAttributes: new { @class = "control-label col-md-10" })
+                        @Html.EditorFor(model => model[0].Category.SettingsAllSubitems)
+                        @Html.ValidationMessageFor(model => model[0].Category.SettingsAllSubitems, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model[0].Category.SettingsAllSubitems, "Settings for all subitems", htmlAttributes: new { @class = "control-label col-md-10" })
                     </div>
                 </div>
             </div>

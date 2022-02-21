@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace UserTest.Models
 {
-    public class Category
+    public class VideoCategory
     {
         public string CategoryName { get; set; } = "Scree9 Video";
         public bool InheritParent { get; set; } = true;
